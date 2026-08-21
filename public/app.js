@@ -44,9 +44,12 @@ names.forEach((name) => {
     const buttonDeleteElement = document.createElement("button");
     buttonDeleteElement.innerText = "Excluir";
     buttonDeleteElement.addEventListener("click", (event) => {
-        // TODO: remover APENAS este item (li) da lista quando o
-        // botão for clicado (dica: event.currentTarget e parentElement).
+        const itemElement = event.currentTarget.parentElement;
+        itemElement.remove();
     });
+
+    // Adicionar o botao dentro do li
+    liElement.append(buttonDeleteElement);
 
     // Adicionar na árvore DOM, no nosso ul principal
     ulElement.append(liElement);
@@ -63,10 +66,20 @@ buttonListAddElement.addEventListener("click", (event) => {
         return;
     }
 
-    // TODO: criar o li do novo item (com o texto do inputValue) e o
-    // botão "Excluir" dele (igual ao padrão do forEach acima),
-    // adicionar o item na lista (ulElement) e limpar o input
-    // depois de adicionar.
+    const liElement = document.createElement("li");
+    liElement.innerText = inputValue;
+
+    const buttonDeleteElement = document.createElement("button");
+    buttonDeleteElement.innerText = "Excluir";
+    buttonDeleteElement.addEventListener("click", (event) => {
+        const itemElement = event.currentTarget.parentElement;
+        itemElement.remove();
+    });
+
+    liElement.append(buttonDeleteElement);
+    ulElement.append(liElement);
+
+    inputListAddElement.value = "";
 });
 
 
